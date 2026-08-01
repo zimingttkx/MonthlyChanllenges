@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}All Challenges{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'challenges/challenges.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2 class="page-title">Pick a Month</h2>
+<div class="months-grid">
+    {% for month in months %}
+        <a class="month-card" href="{% url 'b' month %}">
+            <span class="month-name">{{ month | title }}</span>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}

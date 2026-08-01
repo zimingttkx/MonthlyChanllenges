@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}{{ month_name | title }} Challenge{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'challenges/challenges.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="challenge-detail">
+    <span class="month-badge">{{ month_name | title }}</span>
+    {% if challenge_test is not None %}
+        <p class="challenge-text">{{ challenge_test }}</p>
+    {% else %}
+        <p class="no-challenge">No challenge for this month yet.</p>
+    {% endif %}
+    <br>
+    <a class="back-button" href="{% url 'c' %}">Back to All Challenges</a>
+</div>
+{% endblock %}

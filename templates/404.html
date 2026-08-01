@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Page Not Found{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <h1>404</h1>
+    <p>The page you're looking for doesn't exist.</p>
+    <a class="back-link" href="{% url 'c' %}">Go Home</a>
+</div>
+{% endblock %}

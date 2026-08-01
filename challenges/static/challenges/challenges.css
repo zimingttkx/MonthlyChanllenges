@@ -1,0 +1,115 @@
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.month-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    background: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #1a1a2e;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.month-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.month-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.25);
+}
+
+.month-card:hover::before {
+    opacity: 1;
+}
+
+.month-card:hover .month-name {
+    color: #fff;
+}
+
+.month-name {
+    position: relative;
+    z-index: 1;
+    transition: color 0.25s;
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.challenge-detail {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.challenge-detail .month-badge {
+    display: inline-block;
+    padding: 0.4rem 1.25rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-detail .challenge-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #1a1a2e;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    display: inline-block;
+    min-width: 280px;
+}
+
+.challenge-detail .no-challenge {
+    font-size: 1.15rem;
+    color: #999;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    display: inline-block;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid #667eea;
+    color: #667eea;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.back-button:hover {
+    background: #667eea;
+    color: #fff;
+}
