@@ -1,5 +1,5 @@
 from django.urls import path
-from chanllenges import views
+from challenges import views
 
 # urlConfig
 urlpatterns = [
