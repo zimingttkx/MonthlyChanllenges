@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
+from django.template.base import FILTER_ARGUMENT_SEPARATOR
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.shortcuts import render
@@ -15,26 +16,24 @@ monthly_challenges = {
     "september": "Learning English for 26 minutes",
     "october": "Learning English for 27 minutes",
     "november": "Learning English for 29 minutes",
-    "december": "Learning English for 88 minutes",
+    "december": None,
 }
 
 # Create your views here.
 
 def index(request):
-    list_items = ""
     months = list(monthly_challenges.keys())
-    for month in months:
-        month_path = reverse('b', args=[month])
-        list_items += f"<li><a href=\"{month_path}\">{month.capitalize()}</a></li>"
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    return render(request, "challenges/index.html", {
+        "months": months
+    })
 
 def monthly__challenge_by_str(request, month):
     try:
         challenge_test = monthly_challenges[month]
-        return render("challenges/challenge.html")
+        return render(request, "challenges/challenge.html", {"challenge_test": challenge_test,
+                                                             "month_name": month})
     except KeyError:
-        return HttpResponseNotFound("<h1>This month dose not exist</h1>")
+        raise Http404()
 
 
 def monthly__challenge_by_number(request,  month):
